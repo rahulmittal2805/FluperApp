@@ -116,6 +116,7 @@ public class UpdateProduct extends AppCompatActivity implements View.OnClickList
         tvImagePath.setText(null);
         Intent i = new Intent(UpdateProduct.this, ShowProduct.class);
         startActivity(i);
+        finish();
 
 
 
