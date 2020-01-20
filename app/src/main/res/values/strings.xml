@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Fluper Application</string>
+    <string name="show_product">Show Product</string>
+    <string name="create_product">Create Product</string>
+    <string name="add_product">Add Product</string>
+    <string name="delete">Delete</string>
+    <string name="update">Update</string>
+    <string name="enter_store_name">Enter Store Name</string>
+
+    <array name="colors">
+        <item>Choose Color</item>
+        <item>Black</item>
+        <item>White</item>
+        <item>Blue</item>
+        <item>Green</item>
+        <item>Orange</item>
+    </array>
+</resources>
