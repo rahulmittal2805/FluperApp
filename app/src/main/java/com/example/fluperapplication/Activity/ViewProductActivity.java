@@ -2,9 +2,9 @@ package com.example.fluperapplication.Activity;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.Paint;
 import android.os.Bundle;
@@ -12,12 +12,9 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import com.example.fluperapplication.R;
-
-import static com.example.fluperapplication.Activity.CreateProduct.DATABASE_NAME;
-import static com.example.fluperapplication.Activity.CreateProduct.DB_TABLE;
-import static com.example.fluperapplication.Activity.CreateProduct.mDatabase;
+import static com.example.fluperapplication.Activity.MainActivity.DATABASE_NAME;
+import static com.example.fluperapplication.Activity.MainActivity.DB_TABLE;
 import static com.example.fluperapplication.Utils.DbBitmapUtility.getImage;
 
 public class ViewProductActivity extends AppCompatActivity {
@@ -25,7 +22,7 @@ public class ViewProductActivity extends AppCompatActivity {
     TextView tvName, tvDiscription, tvRealPrice, tvSalePrice, tvColor, tvStoreName;
     ImageView ivImage;
     Bundle bundle;
-
+    SQLiteDatabase mDatabase;
     LinearLayout llBackButton, llupdate, lldelete;
 
     @Override

@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.database.Cursor;
+
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
@@ -16,18 +17,17 @@ import com.example.fluperapplication.Model.Product;
 import com.example.fluperapplication.R;
 
 import java.util.ArrayList;
-import java.util.List;
 
-import static com.example.fluperapplication.Activity.CreateProduct.DATABASE_NAME;
-import static com.example.fluperapplication.Activity.CreateProduct.DB_TABLE;
-import static com.example.fluperapplication.Activity.CreateProduct.mDatabase;
+import static com.example.fluperapplication.Activity.MainActivity.DATABASE_NAME;
+import static com.example.fluperapplication.Activity.MainActivity.DB_TABLE;
+
 
 public class ShowProduct extends AppCompatActivity {
 
     RecyclerView rlList;
     LinearLayout llBackButton;
     ArrayList<Product> productList = new ArrayList<>();
-
+    SQLiteDatabase mDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

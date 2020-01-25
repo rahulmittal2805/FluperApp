@@ -29,8 +29,9 @@ import com.example.fluperapplication.Utils.DbBitmapUtility;
 
 import java.io.IOException;
 
-import static com.example.fluperapplication.Activity.CreateProduct.DATABASE_NAME;
-import static com.example.fluperapplication.Activity.CreateProduct.DB_TABLE;
+
+import static com.example.fluperapplication.Activity.MainActivity.DATABASE_NAME;
+import static com.example.fluperapplication.Activity.MainActivity.DB_TABLE;
 
 public class UpdateProduct extends AppCompatActivity implements View.OnClickListener {
 
@@ -95,13 +96,13 @@ public class UpdateProduct extends AppCompatActivity implements View.OnClickList
 
 
         ContentValues cv = new ContentValues();
-        cv.put(CreateProduct.NAME, name);
-        cv.put(CreateProduct.DISCRIPTION, discription);
-        cv.put(CreateProduct.REGULARPRICE, regularprice);
-        cv.put(CreateProduct.SALEPRICE, saleprise);
-        cv.put(CreateProduct.COLOR, color);
-        cv.put(CreateProduct.IMAGE, image);
-        cv.put(CreateProduct.STORE, store);
+        cv.put(MainActivity.NAME, name);
+        cv.put(MainActivity.DISCRIPTION, discription);
+        cv.put(MainActivity.REGULARPRICE, regularprice);
+        cv.put(MainActivity.SALEPRICE, saleprise);
+        cv.put(MainActivity.COLOR, color);
+        cv.put(MainActivity.IMAGE, image);
+        cv.put(MainActivity.STORE, store);
         String where = "Pname=?";
         String[] whereArgs = new String[]{ProductName};
         mDatabase.update(DB_TABLE, cv, where, whereArgs);

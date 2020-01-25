@@ -34,29 +34,40 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.example.fluperapplication.Activity.MainActivity.COLOR;
+import static com.example.fluperapplication.Activity.MainActivity.DATABASE_NAME;
+import static com.example.fluperapplication.Activity.MainActivity.DB_TABLE;
+import static com.example.fluperapplication.Activity.MainActivity.DISCRIPTION;
+import static com.example.fluperapplication.Activity.MainActivity.IMAGE;
+import static com.example.fluperapplication.Activity.MainActivity.NAME;
+import static com.example.fluperapplication.Activity.MainActivity.REGULARPRICE;
+import static com.example.fluperapplication.Activity.MainActivity.SALEPRICE;
+import static com.example.fluperapplication.Activity.MainActivity.STORE;
+
 public class CreateProduct extends AppCompatActivity implements View.OnClickListener {
     LinearLayout llBackButton, llAddProduct, llchooseImage;
     TextView tvImagePath;
     EditText etproductName, etproductDiscription, etRegularPrice, etSalePrice, etStorename;
     Spinner spinnerColor;
     String productname, productdiscripton, productregularprice, productsaleprice, productStorename, prodctImage, productColor;
-    public static final String DATABASE_NAME = "myproductsdatabase";
+
+   // public static final String DATABASE_NAME = "myproductsdatabase";
 
     Bitmap bitmap;
 
     // Table Names
-    static final String DB_TABLE = "product10";
+   // static final String DB_TABLE = "product10";
 
     // column names
-    static final String NAME = "Pname";
+  /*  static final String NAME = "Pname";
     static final String DISCRIPTION = "Pdiscription";
     static final String REGULARPRICE = "Pregularprice";
     static final String SALEPRICE = "Psaleprise";
     static final String COLOR = "Pcolor";
     static final String IMAGE = "Pimage";
-    static final String STORE = "Pstore";
+    static final String STORE = "Pstore";*/
 
-    static SQLiteDatabase mDatabase;
+     SQLiteDatabase mDatabase;
 
     String[] PERMISSIONS = {android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
             android.Manifest.permission.READ_EXTERNAL_STORAGE, android.Manifest.permission.CAMERA};
@@ -94,7 +105,7 @@ public class CreateProduct extends AppCompatActivity implements View.OnClickList
 
         //creating a database
         mDatabase = openOrCreateDatabase(DATABASE_NAME, MODE_PRIVATE, null);
-        createEmployeeTable();
+        //createEmployeeTable();
     }
 
 
