@@ -50,24 +50,10 @@ public class CreateProduct extends AppCompatActivity implements View.OnClickList
     EditText etproductName, etproductDiscription, etRegularPrice, etSalePrice, etStorename;
     Spinner spinnerColor;
     String productname, productdiscripton, productregularprice, productsaleprice, productStorename, prodctImage, productColor;
-
-   // public static final String DATABASE_NAME = "myproductsdatabase";
-
+    byte[] image;
+    long length;
     Bitmap bitmap;
-
-    // Table Names
-   // static final String DB_TABLE = "product10";
-
-    // column names
-  /*  static final String NAME = "Pname";
-    static final String DISCRIPTION = "Pdiscription";
-    static final String REGULARPRICE = "Pregularprice";
-    static final String SALEPRICE = "Psaleprise";
-    static final String COLOR = "Pcolor";
-    static final String IMAGE = "Pimage";
-    static final String STORE = "Pstore";*/
-
-     SQLiteDatabase mDatabase;
+    SQLiteDatabase mDatabase;
 
     String[] PERMISSIONS = {android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
             android.Manifest.permission.READ_EXTERNAL_STORAGE, android.Manifest.permission.CAMERA};
@@ -76,7 +62,6 @@ public class CreateProduct extends AppCompatActivity implements View.OnClickList
     private static final int PICK_FILE_REQUEST = 234;
     private Uri filePath;
 
-    ArrayList<Product> productList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,23 +90,11 @@ public class CreateProduct extends AppCompatActivity implements View.OnClickList
 
         //creating a database
         mDatabase = openOrCreateDatabase(DATABASE_NAME, MODE_PRIVATE, null);
-        //createEmployeeTable();
+
     }
 
 
-    private void createEmployeeTable() {
 
-        String CREATE_TABLE_PRODUCT = "CREATE TABLE IF NOT EXISTS " + DB_TABLE + "(" +
-                NAME + " TEXT," +
-                DISCRIPTION + " TEXT," +
-                REGULARPRICE + " TEXT," +
-                SALEPRICE + " TEXT," +
-                COLOR + " TEXT," +
-                IMAGE + " BLOB," +
-                STORE + " TEXT);";
-
-        mDatabase.execSQL(CREATE_TABLE_PRODUCT);
-    }
 
     //In this method we will do the create operation
     private void addProduct(String name, String discription, String regularprice, String saleprise, String color, byte[] image, String store) {
@@ -146,6 +119,7 @@ public class CreateProduct extends AppCompatActivity implements View.OnClickList
         tvImagePath.setText(null);
         Intent i = new Intent(CreateProduct.this, ShowProduct.class);
         startActivity(i);
+        finish();
 
 
     }
@@ -202,10 +176,15 @@ public class CreateProduct extends AppCompatActivity implements View.OnClickList
                 productColor = spinnerColor.getSelectedItem().toString();
                 prodctImage = tvImagePath.getText().toString();
                 productStorename = etStorename.getText().toString();
-                byte[] image = DbBitmapUtility.getBytes(bitmap);
-                long length= image.length;
-                System.out.println("Sizeeeeeeeeeeeeeeeee="+length);
 
+
+                try {
+                    image = DbBitmapUtility.getBytes(bitmap);
+                    length = image.length;
+                    System.out.println("Sizeeeeeeeeeeeeeeeee=" + length);
+                } catch (Exception e) {
+                    Toast.makeText(this, "Select Image", Toast.LENGTH_LONG).show();
+                }
 
 
                 if (TextUtils.isEmpty(productname)) {
@@ -222,7 +201,7 @@ public class CreateProduct extends AppCompatActivity implements View.OnClickList
                     Toast.makeText(this, "Select Image", Toast.LENGTH_LONG).show();
                 } else if (TextUtils.isEmpty(productColor)) {
                     Toast.makeText(this, "Select Color", Toast.LENGTH_LONG).show();
-                }else if(length/1000>=500){
+                } else if (length / 8000 >= 500) {
                     Toast.makeText(this, "Select another image less than 500 kb", Toast.LENGTH_LONG).show();
                     tvImagePath.setText(null);
                     mFilechosser();

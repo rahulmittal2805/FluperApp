@@ -40,7 +40,8 @@ public class UpdateProduct extends AppCompatActivity implements View.OnClickList
     EditText etproductName, etproductDiscription, etRegularPrice, etSalePrice, etStorename;
     Spinner spinnerColor;
     String productname, productdiscripton, productregularprice, productsaleprice, productStorename, prodctImage, productColor;
-
+    byte[] image;
+    long length;
     SQLiteDatabase mDatabase;
     Bitmap bitmap;
     private static final int PICK_FILE_REQUEST = 234;
@@ -175,11 +176,13 @@ public class UpdateProduct extends AppCompatActivity implements View.OnClickList
                 productColor = spinnerColor.getSelectedItem().toString();
                 prodctImage = tvImagePath.getText().toString();
                 productStorename = etStorename.getText().toString();
-
-                byte[] image = DbBitmapUtility.getBytes(bitmap);
-                long length = image.length;
-                System.out.println("Sizeeeeeeeeeeeeeeeee=" + length);
-
+                try {
+                    image = DbBitmapUtility.getBytes(bitmap);
+                    length= image.length;
+                    System.out.println("Sizeeeeeeeeeeeeeeeee="+length);
+                }catch (Exception e){
+                    Toast.makeText(this, "Select Image", Toast.LENGTH_LONG).show();
+                }
 
                 if (TextUtils.isEmpty(productname)) {
                     Toast.makeText(this, "Enter Product Name", Toast.LENGTH_LONG).show();
@@ -195,7 +198,7 @@ public class UpdateProduct extends AppCompatActivity implements View.OnClickList
                     Toast.makeText(this, "Select Image", Toast.LENGTH_LONG).show();
                 } else if (TextUtils.isEmpty(productColor)) {
                     Toast.makeText(this, "Select Color", Toast.LENGTH_LONG).show();
-                } else if (length / 1000 >= 500) {
+                } else if (length / 8000 >= 500) {
                     Toast.makeText(this, "Select another image less than 500 kb", Toast.LENGTH_LONG).show();
                     tvImagePath.setText(null);
                     mFilechosser();

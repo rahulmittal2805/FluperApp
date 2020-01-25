@@ -114,6 +114,7 @@ public class ViewProductActivity extends AppCompatActivity {
         i.putExtra("Store",bundle.getString("Store"));
         System.out.println(bundle.getString("Name"));
         startActivity(i);
+        finish();
     }
 
 
